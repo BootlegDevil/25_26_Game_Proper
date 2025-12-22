@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerSave : MonoBehaviour
 {
-    public int health = 100;
-    public int coins = 0;
+    public PlayerHealth health;
+    public PlayerInventory inventory;
 
     // Update is called once per frame
     void Update()
@@ -22,8 +22,8 @@ public class PlayerSave : MonoBehaviour
     public void Save()
     {
         SaveData data = new SaveData();
-        data.health = health;
-        data.coins = coins;
+        data.health = health.healthPlayer;
+        data.coins = inventory.numberCollectible;
         data.position = new float[]
         {
             transform.position.x,
@@ -41,8 +41,8 @@ public class PlayerSave : MonoBehaviour
             data.position[1],
             data.position[2]
         );
-        health = data.health;
-        coins = data.coins;
+        health.SetHealth(data.health);
+        inventory.SetInventory(data.coins);
         Debug.Log("Game Loaded");
     }
 }

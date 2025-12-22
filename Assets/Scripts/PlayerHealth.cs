@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [SerializeField] private float maxHealthPlayer = 3;
-    [SerializeField] private float healthPlayer = 3;
+    [SerializeField] private int maxHealthPlayer = 3;
+    [SerializeField] public int healthPlayer = 3;
     public TextMeshProUGUI textHealthPlayer;
 
     private void Start()
@@ -17,7 +17,7 @@ public class PlayerHealth : MonoBehaviour
 
     public bool isDead = false;
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(int damage)
     {
         healthPlayer = healthPlayer - damage;
         if (healthPlayer < 0)
@@ -39,5 +39,11 @@ public class PlayerHealth : MonoBehaviour
     private void ReloadScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void SetHealth(int health)
+    {
+        healthPlayer = health;
+        textHealthPlayer.text = healthPlayer.ToString();
     }
 }

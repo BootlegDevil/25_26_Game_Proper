@@ -12,4 +12,9 @@ public class PlayerInventory : MonoBehaviour
         numberCollectible++;
         textCollectible.text = numberCollectible.ToString();
     }
+    public void SetInventory(int inventory)
+    {
+        numberCollectible = inventory;
+        textCollectible.text = numberCollectible.ToString();
+    }
 }
